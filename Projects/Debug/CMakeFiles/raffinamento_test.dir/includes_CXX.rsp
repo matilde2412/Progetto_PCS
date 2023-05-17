@@ -1,0 +1,1 @@
+-IC:/Progetto_PCS/PCS2023_Exercises/Projects/Raffinamento/src -IC:/Progetto_PCS/PCS2023_Exercises/Projects/Raffinamento/test -isystem C:/Progetto_PCS/PCS2023_Exercises/externals/Main_Install/eigen3/include/eigen3 -isystem C:/Progetto_PCS/PCS2023_Exercises/externals/Main_Install/googletest/include

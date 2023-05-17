@@ -1,0 +1,8 @@
+C:/Progetto_PCS/PCS2023_Exercises/Projects/Debug/CMakeFiles/raffinamento_test.dir
+C:/Progetto_PCS/PCS2023_Exercises/Projects/Debug/CMakeFiles/raffinamento_program.dir
+C:/Progetto_PCS/PCS2023_Exercises/Projects/Debug/CMakeFiles/edit_cache.dir
+C:/Progetto_PCS/PCS2023_Exercises/Projects/Debug/CMakeFiles/rebuild_cache.dir
+C:/Progetto_PCS/PCS2023_Exercises/Projects/Debug/src/CMakeFiles/edit_cache.dir
+C:/Progetto_PCS/PCS2023_Exercises/Projects/Debug/src/CMakeFiles/rebuild_cache.dir
+C:/Progetto_PCS/PCS2023_Exercises/Projects/Debug/test/CMakeFiles/edit_cache.dir
+C:/Progetto_PCS/PCS2023_Exercises/Projects/Debug/test/CMakeFiles/rebuild_cache.dir
