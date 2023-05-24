@@ -1,5 +1,0 @@
-if(EXISTS "C:/Progetto_PCS/PCS2023_Exercises/Projects/Debug/raffinamento_test[1]_tests.cmake")
-  include("C:/Progetto_PCS/PCS2023_Exercises/Projects/Debug/raffinamento_test[1]_tests.cmake")
-else()
-  add_test(raffinamento_test_NOT_BUILT raffinamento_test_NOT_BUILT)
-endif()
