@@ -142,7 +142,6 @@ namespace ProjectLibrary
             vettoreIdArea.push_back(make_pair(triangolo2.id, AreaTriangolo(vettorePunti,triangolo2)));
         }
         vettoreTriangoli[idt].flag = false;
-        return;
     }
 
     void Fusione(vector<pair<int,double>>& vettoreIdArea,
@@ -178,7 +177,6 @@ namespace ProjectLibrary
             vettoreIdArea[i].first = b[i-sx].first;
             vettoreIdArea[i].second = b[i-sx].second;
         }
-        return;
     }
 
 
@@ -194,7 +192,6 @@ namespace ProjectLibrary
             MergeSort(vettoreIdArea,cx+1,dx);
             Fusione(vettoreIdArea,sx,cx,dx);
         }
-        return;
     }
 
     void Raffinamento(vector<Punto>& vettorePunti,
@@ -215,11 +212,13 @@ namespace ProjectLibrary
             int idAdiacente = IdAdiacente(vettoreTriangoli[idCorrente],vettoreTriangoli,vettoreLati,vettorePunti);
             bool controllo = false; //serve per fermarci quando i due lati maggiori di tMagg e tAdiac sono coincidenti
             unsigned int idLatoPrec = IdLatoMaggiore(vettoreLati,vettorePunti,vettoreTriangoli[idCorrente]); //qst var la aggiorno ogni iterazione in cui guardo triang adiac
+            //aggiorno latiSpezzati perche dopo DivisoneT dentro DivisioneT2 ho aggiunto lato nuovo, scalo indietro di una posiz
             vector<unsigned int> latiSpezzati = {static_cast<unsigned int>(vettoreLati.size()) - 3, static_cast<unsigned int>(vettoreLati.size()) - 2};  //il primo ha inizio coincidente con l maggiore, il secondo con fine di l maggiore
 
             while (idAdiacente != -1 && controllo == false) //verifico che tMaggiore abbia triangolo adiacente e non sia al bordo
             {
-                //caso in cui i lati maggiori di tcorrente e tadiac coincidono, creo lato tra punto medio e punto opp di tadiac e divido tadiac in due triangolini
+                //caso in cui i lati maggiori di tcorrente e tadiac coincidono, creo lato tra punto medio e punto opp di tadiac 
+                //divisione in 2 sottotriangoli
                 if (idLatoPrec == IdLatoMaggiore(vettoreLati,vettorePunti,vettoreTriangoli[idAdiacente]))
                 {
                     unsigned int idpuntoOpp = IdPuntoOpposto(vettoreTriangoli[idAdiacente],vettoreLati[idLatoPrec]);
@@ -228,6 +227,7 @@ namespace ProjectLibrary
                     controllo = true;
                 }
                 else //richiamo funz su triangolo adiacente, prima divisione 'classica' poi l'altra
+                     //divisione in 3 sottotriangoli
                 {
                     DivisioneTriangolo(vettorePunti,vettoreLati,vettoreTriangoli,vettoreIdArea,idAdiacente);
 
@@ -246,14 +246,15 @@ namespace ProjectLibrary
 
 
                 }
+                //aggiornamento variabili:
                 idCorrente = idAdiacente; //il vecchio triangolo adiacente sarà quello su cui applicare le funzioni al prossimo ciclo
                 idAdiacente = IdAdiacente(vettoreTriangoli[idCorrente],vettoreTriangoli,vettoreLati,vettorePunti);
                 idLatoPrec = IdLatoMaggiore(vettoreLati,vettorePunti,vettoreTriangoli[idCorrente]);
+                //scalo di sue posiz perche nel caso dell'else è come se DivisioneT2 avvenisse due volte, aggiungendo i due lati nuovi
                 latiSpezzati = {static_cast<unsigned int>(vettoreLati.size()) - 4, static_cast<unsigned int>(vettoreLati.size()) - 3};
 
             }
         }
-        return;
     }
 
     bool ExportPunti(vector<Punto>& vettorePunti)
